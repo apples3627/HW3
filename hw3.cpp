@@ -44,7 +44,7 @@ int main() {
     cout <<"Analytic: " << integral_analytic <<"\tnumerical: " <<integral_num<< endl;
     cout << "error : "<<(integral_num-integral_analytic)/integral_analytic*100<<"%\n";
 
-    //sin 미분
+    //sin(x) 미분
     cout << "\n\n\n\n";
     cout << "sin(x)\n\n";//수정
     cout << "x : ";
@@ -75,7 +75,39 @@ int main() {
     integral_analytic = (sin(x)*b)-(sin(x)*a);//수정
     cout <<"Analytic: " << integral_analytic <<"\tnumerical: " <<integral_num<< endl;
     cout << "error : "<<(integral_num-integral_analytic)/integral_analytic*100<<"%\n";
+
+    //cos(x) 미분
+    cout << "\n\n\n\n";
+    cout << "cos(x)\n\n";//수정
+    cout << "x : ";
+    cin >> x;
+    A_result = -sin(x); //수정
+    N_result = (cos(x + N) - cos(x - N)) / (2 * N); //수정
+    N_result2 = (cos(x + N2) - cos(x - N2)) / (2 * N2); //수정
+    N_result3 = (cos(x + N3) - cos(x - N3)) / (2 * N3); //수정
+    N_result4 = (cos(x + N4) - cos(x - N4)) / (2 * N4); //수정
+    cout <<"Analytic: " << A_result <<"\tnumerical: " <<N_result<< endl;
+    cout << "error : "<<(N_result-A_result)/A_result*100<<"%\n";
     
+    cout <<"\nN = 0.05 Analytic: " << A_result <<"\tnumerical: " <<N_result2;
+    cout << "\terror : "<<(N_result2-A_result)/A_result*100<<"%\n";
+    cout <<"N = 0.03 Analytic: " << A_result <<"\tnumerical: " <<N_result3;
+    cout << "\terror : "<<(N_result3-A_result)/A_result*100<<"%\n";
+    cout <<"N = 0.01 Analytic: " << A_result <<"\tnumerical: " <<N_result4;
+    cout << "\terror : "<<(N_result4-A_result)/A_result*100<<"%\n";
+    
+    //cos(x) 적분
+    cout << "\n\na b N\n";
+    cin >> a >> b >> I_N;
+    dt = (b - a) / I_N;
+    integral_num = 0;
+    for (int i = 1; i < I_N; ++i) {
+        integral_num += cos(x) * dt; //수정
+    }
+    integral_analytic = (cos(x)*b)-(cos(x)*a);//수정
+    cout <<"Analytic: " << integral_analytic <<"\tnumerical: " <<integral_num<< endl;
+    cout << "error : "<<(integral_num-integral_analytic)/integral_analytic*100<<"%\n";
+
     
     return 0;
 }
